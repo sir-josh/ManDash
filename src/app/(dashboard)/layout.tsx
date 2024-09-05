@@ -11,7 +11,7 @@ export default function DashboardLayout({
 	return (
 		<div className="h-screen flex">
 			{/* LEFT SIDE*/}
-			<div className="w-[14%] md:w-[8%] lg:w-[16%] xl:w-[14%] p-4">
+			<div className="w-[14%] md:w-[8%] lg:w-[16%] xl:w-[14%] p-4 overflow-y-auto">
 				<Link
 					href="/"
 					className="flex items-center justify-center gap-2 lg:justify-start">
