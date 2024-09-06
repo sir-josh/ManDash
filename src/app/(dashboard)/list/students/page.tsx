@@ -1,19 +1,19 @@
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
-import { role, teachersData } from "@/lib/data";
+import { role, studentsData } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 
-type Teacher = {
+type Student = {
 	id: number;
-	teacherId: string;
+	studentId: string;
 	name: string;
 	email?: string;
 	photo: string;
-	phone: string;
-	subjects: string[];
-	classes: string[];
+	phone?: string;
+	grade: number;
+	class: string;
 	address: string;
 };
 
@@ -23,24 +23,19 @@ const columns = [
 		accessor: "info",
 	},
 	{
-		header: "Teacher ID",
-		accessor: "teacherId",
+		header: "Student ID",
+		accessor: "studentId",
 		className: "hidden md:table-cell",
 	},
 	{
-		header: "Subjects",
-		accessor: "subjects",
-		className: "hidden md:table-cell",
-	},
-	{
-		header: "Classes",
-		accessor: "classes",
+		header: "Grade",
+		accessor: "grade",
 		className: "hidden md:table-cell",
 	},
 	{
 		header: "Phone",
 		accessor: "phone",
-		className: "hidden lg:table-cell",
+		className: "hidden md:table-cell",
 	},
 	{
 		header: "Address",
@@ -53,8 +48,8 @@ const columns = [
 	},
 ];
 
-const TeacherListPage = () => {
-	const renderRow = (item: Teacher) => (
+const StudentsListPage = () => {
+	const renderRow = (item: Student) => (
 		<tr
 			key={item.id}
 			className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-dashPurpleLight">
@@ -68,13 +63,12 @@ const TeacherListPage = () => {
 				/>
 				<div className="flex flex-col text-left">
 					<h3 className="font-semibold">{item.name}</h3>
-					<p className="text-xs text-gray-500">{item?.email}</p>
+					<p className="text-xs text-gray-500">{item.class}</p>
 				</div>
 			</td>
-			<td className="hidden md:table-cell">{item.teacherId}</td>
-			<td className="hidden md:table-cell">{item.subjects.join(",")}</td>
-			<td className="hidden md:table-cell">{item.classes.join(",")}</td>
-			<td className="hidden lg:table-cell">{item.phone}</td>
+			<td className="hidden md:table-cell">{item.studentId}</td>
+			<td className="hidden md:table-cell">{item.grade}</td>
+			<td className="hidden md:table-cell">{item.phone}</td>
 			<td className="hidden lg:table-cell">{item.address}</td>
 			<td>
 				<div className="flex gap-2 items-center">
@@ -108,7 +102,7 @@ const TeacherListPage = () => {
 			{/* TOP HEADER & FILTER BUTTONS */}
 			<div className="flex justify-between items-center">
 				<h1 className="hidden md:block font-semibold text-lg">
-					All Teachers
+					All Students
 				</h1>
 
 				<div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
@@ -131,12 +125,12 @@ const TeacherListPage = () => {
 							/>
 						</button>
 						{role === "admin" && (
-							<button className="w-7 h-7 flex items-center justify-center rounded-full bg-dashPurple">
+							<button className="flex w-8 h-8 items-center justify-center rounded-full bg-dashYellow">
 								<Image
-									src="/delete.png"
+									src="/plus.png"
 									alt=""
-									width={16}
-									height={16}
+									width={14}
+									height={14}
 								/>
 							</button>
 						)}
@@ -148,7 +142,7 @@ const TeacherListPage = () => {
 			<Table
 				columns={columns}
 				renderRow={renderRow}
-				data={teachersData}
+				data={studentsData}
 			/>
 
 			{/* PAGINATION */}
@@ -157,4 +151,4 @@ const TeacherListPage = () => {
 	);
 };
 
-export default TeacherListPage;
+export default StudentsListPage;
