@@ -46,7 +46,7 @@ const SubjectsListPage = () => {
 					<Link href={`/list/teachers/${item.id}`}>
 						<button className="w-7 h-7 flex items-center justify-center rounded-full bg-dashSky">
 							<Image
-								src="/view.png"
+								src="/edit.png"
 								alt=""
 								width={16}
 								height={16}
