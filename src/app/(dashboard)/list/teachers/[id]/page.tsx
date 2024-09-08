@@ -1,5 +1,8 @@
+import Announcement from "@/components/Announcement";
 import BigCalendar from "@/components/BigCalendar";
+import Performance from "@/components/PerformanceChart";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 function SingleTeacherPage() {
@@ -144,7 +147,20 @@ function SingleTeacherPage() {
 			</div>
 
 			{/* RIGHT */}
-			<div className="w-full xl:w-1/3">Right widgets</div>
+			<div className="w-full xl:w-1/3 flex flex-col gap-4">
+				<div className="bg-white p-4 rounded-md">
+					<h1 className="text-xl font-semibold">Shortcuts</h1>
+					<div className="mt-4 flex flex-wrap gap-4 text-xs text-gray-500">
+						<Link className="p-3 rounded-md bg-dashSkyLight" href="/">Teacher&apos;s Classes</Link>
+						<Link className="p-3 rounded-md bg-dashPurpleLight" href="/">Teacher&apos;s Students</Link>
+						<Link className="p-3 rounded-md bg-dashYellowLight" href="/">Teacher&apos;s Lessons</Link>
+						<Link className="p-3 rounded-md bg-pink-50" href="/">Teacher&apos;s Exams</Link>
+						<Link className="p-3 rounded-md bg-dashSkyLight" href="/">Teacher&apos;s Assignment</Link>
+					</div>
+				</div>
+                <Performance />
+				<Announcement />
+			</div>
 		</div>
 	);
 }
