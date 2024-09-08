@@ -1,3 +1,4 @@
+import FormModal from "@/components/FormModal";
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
@@ -83,14 +84,15 @@ const StudentsListPage = () => {
 						</button>
 					</Link>
 					{role === "admin" && (
-						<button className="w-7 h-7 flex items-center justify-center rounded-full bg-dashPurple">
-							<Image
-								src="/delete.png"
-								alt=""
-								width={16}
-								height={16}
-							/>
-						</button>
+						// <button className="w-7 h-7 flex items-center justify-center rounded-full bg-dashPurple">
+						// 	<Image
+						// 		src="/delete.png"
+						// 		alt=""
+						// 		width={16}
+						// 		height={16}
+						// 	/>
+						// </button>
+						<FormModal requestType="delete" table="student" id={item.id} />
 					)}
 				</div>
 			</td>
@@ -125,20 +127,21 @@ const StudentsListPage = () => {
 							/>
 						</button>
 						{role === "admin" && (
-							<button className="flex w-8 h-8 items-center justify-center rounded-full bg-dashYellow">
-								<Image
-									src="/plus.png"
-									alt=""
-									width={14}
-									height={14}
-								/>
-							</button>
+							// <button className="flex w-8 h-8 items-center justify-center rounded-full bg-dashYellow">
+							// 	<Image
+							// 		src="/plus.png"
+							// 		alt=""
+							// 		width={14}
+							// 		height={14}
+							// 	/>
+							// </button>
+							<FormModal requestType="create" table="student" />
 						)}
 					</div>
 				</div>
 			</div>
 
-			{/* TEACHERS LIST */}
+			{/* STUDENTS LIST */}
 			<Table
 				columns={columns}
 				renderRow={renderRow}
