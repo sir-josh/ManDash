@@ -1,5 +1,6 @@
 import Announcement from "@/components/Announcement";
 import BigCalendar from "@/components/BigCalendar";
+import FormModal from "@/components/FormModal";
 import Performance from "@/components/PerformanceChart";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,9 +25,31 @@ function SingleTeacherPage() {
 							/>
 						</div>
 						<div className="w-2/3 flex flex-col justify-between gap-4">
-							<h1 className="text-md md:text-xl font-semibold">
-								Jennifer Kahlanye
-							</h1>
+							<div className="flex items-center gap-4">
+								<h1 className="text-md md:text-xl font-semibold">
+									Jennifer Kahlanye
+								</h1>
+								<FormModal
+									table="teacher"
+									requestType="update"
+									data={{
+										id: 1,
+										username: "michelmclans",
+										email: "michelmclans@gmail.com",
+										password: "password",
+										firstName: "Michel",
+										lastName: "Mclans",
+										phone: "+1 399 390 83",
+										address:
+											"222 lison str, Notown, Australia",
+										bloodType: "AB+",
+										birthday: "1998-01-22",
+										sex: "female",
+										img: "https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=1200",
+									}}
+								/>
+							</div>
+
 							<p className="text-xs md:text-sm text-gray-500">
 								Lorem ipsum dolor sit amet consectetur
 								adipisicing elit.
@@ -151,14 +174,32 @@ function SingleTeacherPage() {
 				<div className="bg-white p-4 rounded-md">
 					<h1 className="text-xl font-semibold">Shortcuts</h1>
 					<div className="mt-4 flex flex-wrap gap-4 text-xs text-gray-500">
-						<Link className="p-3 rounded-md bg-dashSkyLight" href="/">Teacher&apos;s Classes</Link>
-						<Link className="p-3 rounded-md bg-dashPurpleLight" href="/">Teacher&apos;s Students</Link>
-						<Link className="p-3 rounded-md bg-dashYellowLight" href="/">Teacher&apos;s Lessons</Link>
-						<Link className="p-3 rounded-md bg-pink-50" href="/">Teacher&apos;s Exams</Link>
-						<Link className="p-3 rounded-md bg-dashSkyLight" href="/">Teacher&apos;s Assignment</Link>
+						<Link
+							className="p-3 rounded-md bg-dashSkyLight"
+							href="/">
+							Teacher&apos;s Classes
+						</Link>
+						<Link
+							className="p-3 rounded-md bg-dashPurpleLight"
+							href="/">
+							Teacher&apos;s Students
+						</Link>
+						<Link
+							className="p-3 rounded-md bg-dashYellowLight"
+							href="/">
+							Teacher&apos;s Lessons
+						</Link>
+						<Link className="p-3 rounded-md bg-pink-50" href="/">
+							Teacher&apos;s Exams
+						</Link>
+						<Link
+							className="p-3 rounded-md bg-dashSkyLight"
+							href="/">
+							Teacher&apos;s Assignment
+						</Link>
 					</div>
 				</div>
-                <Performance />
+				<Performance />
 				<Announcement />
 			</div>
 		</div>
