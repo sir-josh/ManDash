@@ -1,8 +1,43 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import React, { useState } from "react";
-import TeacherForm from "./forms/TeacherForm";
+import SpinnerMini from "./SpinnerMini";
+// import TeacherForm from "./forms/TeacherForm";
+// import StudentForm from "./forms/StudentForm copy";
+const TeacherForm = dynamic(() => import("./forms/TeacherForm"), {
+	loading: () => <SpinnerMini />,
+});
+const StudentForm = dynamic(() => import("./forms/TeacherForm"), {
+	loading: () => <SpinnerMini />,
+});
+const ParentForm = dynamic(() => import("./forms/ParentForm"));
+const SubjectForm = dynamic(() => import("./forms/SubjectForm"));
+const ResultForm = dynamic(() => import("./forms/ResultForm"));
+const LessonForm = dynamic(() => import("./forms/LessonForm"));
+const ExamForm = dynamic(() => import("./forms/ExamForm"));
+const EventForm = dynamic(() => import("./forms/EventForm"));
+const ClassForm = dynamic(() => import("./forms/ParentForm"));
+const AssignmentForm = dynamic(() => import("./forms/AssignmentForm"));
+const AnnouncementForm = dynamic(() => import("./forms/AnnouncementForm"));
+
+
+const forms: {
+	[key: string]: (type: "create" | "update", data?: any) => JSX.Element;
+} = {
+	teacher: (type, data) => <TeacherForm type={type} data={data} />,
+	student: (type, data) => <StudentForm type={type} data={data} />,
+	parent: (type, data) => <ParentForm type={type} data={data} />,
+	subject: (type, data) => <SubjectForm type={type} data={data} />,
+	result: (type, data) => <ResultForm type={type} data={data} />,
+	lesson: (type, data) => <LessonForm type={type} data={data} />,
+	exam: (type, data) => <ExamForm type={type} data={data} />,
+	event: (type, data) => <EventForm type={type} data={data} />,
+	class: (type, data) => <ClassForm type={type} data={data} />,
+	assignment: (type, data) => <AssignmentForm type={type} data={data} />,
+	announcement: (type, data) => <AnnouncementForm type={type} data={data} />,
+};
 
 function FormModal({
 	table,
@@ -48,10 +83,10 @@ function FormModal({
 					Delete
 				</button>
 			</form>
-		) : requestType === "create" ? (
-			<TeacherForm type="create" />
+		) : requestType === "create" || requestType === "update" ? (
+			forms[table](requestType, data)
 		) : (
-			<TeacherForm type="update" data={data} />
+			"Form not found!"
 		);
 	};
 
