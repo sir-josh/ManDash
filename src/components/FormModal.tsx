@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
+import TeacherForm from "./forms/TeacherForm";
 
 function FormModal({
 	table,
@@ -47,8 +48,10 @@ function FormModal({
 					Delete
 				</button>
 			</form>
+		) : requestType === "create" ? (
+			<TeacherForm type="create" />
 		) : (
-			"Create or update form"
+			<TeacherForm type="update" data={data} />
 		);
 	};
 
@@ -66,7 +69,7 @@ function FormModal({
 			</button>
 			{open && (
 				<div className="w-screen h-screen absolute left-0 top-0 bg-black bg-opacity-60 z-40 flex items-center justify-center">
-					<div className="relative bg-white p-4 rounded-md z-50 flex flex-col justify-center items-center w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] 2xl:w-[40%]">
+					<div className="relative bg-white p-4 rounded-md z-50 w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] 2xl:w-[40%]">
 						{/* MODAL CLOSE BUTTON*/}
 						<div
 							className="absolute top-4 right-4 cursor-pointer"
@@ -80,8 +83,8 @@ function FormModal({
 						</div>
 						{/* MODAL BODY*/}
 						<div className="">
-                            <Form />
-                        </div>
+							<Form />
+						</div>
 					</div>
 				</div>
 			)}
