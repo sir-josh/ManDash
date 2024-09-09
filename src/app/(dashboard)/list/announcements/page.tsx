@@ -95,7 +95,7 @@ const AnnouncementsListPage = () => {
 							/>
 						</button>
 						{role === "admin" && (
-							<FormModal requestType="update" table="announcement" />
+							<FormModal requestType="create" table="announcement" />
 						)}
 					</div>
 				</div>

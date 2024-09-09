@@ -69,7 +69,11 @@ const ParentsListPage = () => {
 						// 	/>
 						// </button>
 						<>
-							<FormModal requestType="update" table="parent" data={item} />
+							<FormModal
+								requestType="update"
+								table="parent"
+								data={item}
+							/>
 							<FormModal
 								requestType="delete"
 								table="parent"
